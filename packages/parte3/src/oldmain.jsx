@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 
 const Counter = ({ number }) => {
-  console.log("Counter render")
+  console.log('Counter render')
   return <h1>{number}</h1>
 }
 
@@ -13,7 +13,7 @@ const App = () => {
   // const contadorValue = contador[0]
   // const updateContador = contador[1]
 
-  console.log("render")
+  console.log('render')
 
   const handleClick = () => {
     // setContador(contador + 1)
@@ -32,7 +32,7 @@ const App = () => {
   //   mensajePar = "Es impar"
   // }
 
-  const mensajePar = isEven ? "Es par:" : "Es impar"
+  const mensajePar = isEven ? 'Es par:' : 'Es impar'
 
   return (
     <div>
@@ -56,6 +56,5 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )
-

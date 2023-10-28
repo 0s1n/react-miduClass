@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Note } from './Note'
-import { getAll as getAllNotes, create as createNote } from './services/notes'
+import { getAll as getAllNotes, create as createNote, update as updateNote } from './services/notes'
 
 export default function App () {
   const [notes, setNotes] = useState([])
@@ -13,11 +13,11 @@ export default function App () {
     getAllNotes()
       .then(notes => {
         setNotes(notes)
-        setLoading(false)
       })
+    setLoading(false)
   }, [])
 
-  // const [showAll, setSetshowAll] = useState(true)
+  const [showAll, setSetshowAll] = useState(true)
 
   const handleChange = (e) => {
     setNewNote(e.target.value)
@@ -59,20 +59,30 @@ export default function App () {
     setNewNote('')
   }
 
-  // const handleShowAll = () => {
-  //     setSetshowAll(() => !showAll)
-  // }
+  const toggleImportanceOf = (id) => {
+    const note = notes.find(n => n.id === id)
+    const changedNote = { ...note, important: !note.important }
+
+    updateNote(id, changedNote)
+      .then(returnedNote =>
+        setNotes(notes.map(note => note.id !== id ? note : returnedNote)))
+      .catch(error => setError(`Note ${note.content} was already removed from server. Error: ${error}`))
+  }
+
+  const handleShowAll = () => {
+    setSetshowAll(() => !showAll)
+  }
 
   return (
     <div>
       <h1>Notes</h1>
-      {/* <button onClick={handleShowAll}>{showAll ? "Show only important" : "Show all"}</button> */}
+      <button onClick={handleShowAll}>{showAll ? 'Show only important' : 'Show all'}</button>
       {loading ? 'Cargando...' : ''}
       <ol>
         {
           notes
-            // .filter(note => note.important === true ? note : showAll)
-            .map(note => <Note key={note.id} {...note} />)
+            .filter(note => note.important === true ? note : showAll)
+            .map(note => <Note key={note.id} note={note} toggleImportance={() => toggleImportanceOf(note.id)} />)
         }
       </ol>
 

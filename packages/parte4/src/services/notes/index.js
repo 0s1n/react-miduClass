@@ -1,17 +1,23 @@
-import axios from 'axios';
+import axios from 'axios'
+const baseUrl = 'http://localhost:3001/api/notes'
 
 export const create = ({ title, body, userId }) => {
   return axios
-    .post('https://jsonplaceholder.typicode.com/posts', { title, body, userId })
+    .post(baseUrl, { title, body, userId })
     .then((res) => {
-      const { data } = res;
-      return data;
-    });
-};
+      const { data } = res
+      return data
+    })
+}
+
 export const getAll = () => {
-  return axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => {
-    console.log(res);
-    const { data } = res;
-    return data;
-  });
-};
+  return axios.get(baseUrl).then((res) => {
+    const { data } = res
+    return data
+  })
+}
+
+export const update = (id, newObject) => {
+  const req = axios.patch(`${baseUrl}/${id}`, newObject)
+  return req.then(res => res.data)
+}
