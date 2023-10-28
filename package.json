@@ -5,13 +5,9 @@
   "description": "",
   "keywords": [],
   "license": "ISC",
-  "author": "",
-  "main": "index.js",
+  "author": "0s1n",
   "workspaces": [
-    "parte1",
-    "parte2",
-    "parte3",
-    "parte4"
+    "packages"
   ],
   "scripts": {
     "all:update": "pnpm -r update -i -L",
@@ -19,7 +15,11 @@
     "parte1": "pnpm -F @react-miduclass/parte1 run dev",
     "parte2": "pnpm -F @react-miduclass/parte2 run dev",
     "parte3": "pnpm -F @react-miduclass/parte3 run dev",
-    "parte4": "pnpm -F @react-miduclass/parte3 run dev"
+    "parte4": "pnpm -F @react-miduclass/parte4 run dev",
+    "parte5": "pnpm -F @react-miduclass/parte5 run dev"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
   },
   "devDependencies": {
     "@types/react": "18.2.31",
@@ -29,6 +29,7 @@
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.3",
+    "standard": "^17.1.0",
     "vite": "4.5.0"
   },
   "engines": {
