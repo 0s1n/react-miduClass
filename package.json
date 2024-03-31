@@ -19,7 +19,10 @@
     "parte5": "pnpm -F @react-miduclass/parte5 run dev"
   },
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+    "extends": "./node_modules/standard/eslintrc.json",
+    "env": {
+      "jest": true
+    }
   },
   "devDependencies": {
     "@types/react": "18.2.31",
