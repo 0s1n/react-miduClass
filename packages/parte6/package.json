@@ -17,7 +17,7 @@
     "cross-env": "7.0.3",
     "dotenv": "16.3.1",
     "express": "4.20.0",
-    "mongoose": "7.6.3"
+    "mongoose": "8.8.3"
   },
   "devDependencies": {
     "jest": "29.7.0",
